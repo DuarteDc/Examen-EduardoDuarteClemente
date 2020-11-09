@@ -26,6 +26,8 @@ class ClienteRequest extends FormRequest
         return [
             'id' => 'required',
             'nombre'=> 'required',
+            'updated_at'=> 'required',
+            'created'=> 'required',
         ];
     }
 }

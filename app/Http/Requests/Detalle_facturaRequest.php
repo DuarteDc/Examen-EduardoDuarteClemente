@@ -28,6 +28,8 @@ class Detalle_facturaRequest extends FormRequest
             'numero_factura'=> 'required',
             'producto_id'=> 'required',
             'cantidad'=> 'required',
+            'updated_at'=> 'required',
+            'created'=> 'required',
             
         ];
     }

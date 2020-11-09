@@ -27,6 +27,8 @@ class FacturaRequest extends FormRequest
             'numero'=> 'required',
             'fecha'=> 'required',
             'cliente_id'=> 'required',
+            'updated_at'=> 'required',
+            'created'=> 'required',
         ];
     }
 }

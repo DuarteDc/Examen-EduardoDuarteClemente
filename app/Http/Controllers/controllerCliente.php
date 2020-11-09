@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Cliente;
+use App\Clientes;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClienteRequest;
 
@@ -14,7 +14,7 @@ class controllerCliente extends Controller
      */
     public function index()
     {
-        $cliente=Cliente::all();
+        $cliente=Clientes::all();
         return Response()->json($cliente);
     }
 
@@ -36,10 +36,9 @@ class controllerCliente extends Controller
      */
     public function store(Request $request)
     {
-        $cliente = new Cliente;
+        $cliente = new Clientes;
         $cliente->create($request->all());
-        return response()->json($cliente);
-
+        return response()->json($request);
     }
 
     /**
@@ -50,7 +49,7 @@ class controllerCliente extends Controller
      */
     public function show($id)
     {
-        $id=Cliente::find($id);
+        $id=Clientes::find($id);
         return ($id);
     }
 
@@ -62,8 +61,7 @@ class controllerCliente extends Controller
      */
     public function edit($id)
     {
-        $id=Cliente::find($id);
-        return ($id);
+
     }
 
     /**
@@ -75,7 +73,7 @@ class controllerCliente extends Controller
      */
     public function update(Request $request, $id)
     {
-        Cliente::find($id)->update($request->all());
+        Clientes::find($id)->update($request->all());
         return  $request->all();
     }
 
@@ -87,7 +85,7 @@ class controllerCliente extends Controller
      */
     public function destroy($id)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Clientes::find($id);
         $cliente->delete();
         return "El registro se elimino con existo";
     }

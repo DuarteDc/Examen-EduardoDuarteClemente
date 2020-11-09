@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Productos;
 use Illuminate\Http\Request;
-
-class controllerProducto extends Controller
+use App\Http\Requests\ProductoRequest;
+class controllerProductos extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,8 @@ class controllerProducto extends Controller
      */
     public function index()
     {
-        //
+        $pro=Productos::all();
+        return Response()->json($pro);
     }
 
     /**
@@ -34,7 +35,9 @@ class controllerProducto extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pro = new Productos;
+        $pro->create($request->all());
+        return response()->json($request);
     }
 
     /**
@@ -45,7 +48,8 @@ class controllerProducto extends Controller
      */
     public function show($id)
     {
-        //
+        $pro=Productos::find($id);
+        return ($pro);
     }
 
     /**
@@ -56,7 +60,7 @@ class controllerProducto extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -68,7 +72,8 @@ class controllerProducto extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Productos::find($id)->update($request->all());
+        return  $request->all();
     }
 
     /**
@@ -79,6 +84,8 @@ class controllerProducto extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pro = Productos::find($id);
+        $pro->delete();
+        return "El registro se elimino con existo";
     }
 }

@@ -28,7 +28,8 @@ class ProductoRequest extends FormRequest
             'nombre'=> 'required',
             'precio'=> 'required',
             'stock'=> 'required',
-            
+            'updated_at'=> 'required',
+            'created'=> 'required',
         ];
     }
 }

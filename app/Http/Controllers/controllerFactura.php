@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Facturas;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\FacturaRequest;
 class controllerFactura extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class controllerFactura extends Controller
      */
     public function index()
     {
-        //
+        $cliente=Facturas::all();
+        return Response()->json($cliente);
     }
 
     /**
@@ -34,7 +35,9 @@ class controllerFactura extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Facturas;
+        $cliente->create($request->all());
+        return response()->json($request);
     }
 
     /**
@@ -45,7 +48,8 @@ class controllerFactura extends Controller
      */
     public function show($id)
     {
-        //
+        $numero=Facturas::find($id);
+        return ($numero);
     }
 
     /**
@@ -56,7 +60,7 @@ class controllerFactura extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -68,7 +72,8 @@ class controllerFactura extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Facturas::find($id)->update($request->all());
+        return  $request->all();
     }
 
     /**
@@ -79,6 +84,8 @@ class controllerFactura extends Controller
      */
     public function destroy($id)
     {
-        //
+        $numero = Facturas::find($id);
+        $numero->delete();
+        return "El registro se elimino con existo";
     }
 }
